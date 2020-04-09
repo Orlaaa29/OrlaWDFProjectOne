@@ -1,5 +1,10 @@
 export interface AssignmentItem {
     id: number;
+    title: string;
     description: string;
-    quantity: number;
+    dategiven: string;
+    datedue: string;
+    percentage: number;
+   
+    
 }

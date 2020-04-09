@@ -7,27 +7,39 @@ import { AssignmentItem } from './assignment-item';
 export class AssignmentTaskServiceService {
   private db: AssignmentItem[];
   constructor() {
+    console.log("Constructing the service");
+
     this.db=[
       {
         id:1,
+        title:"WDF",
         description:"WDF",
-        quantity:1
+        dategiven: "03/02/20",
+        datedue: "05/05/20",
+        percentage: 65
       },
       {
         id:2,
+        title:"AMR",
         description:"AMR",
-        quantity:1
+        dategiven: "03/02/20",
+        datedue: "03/05/20",
+        percentage: 65
       },
       {
         id:3,
+        title:"DL",
         description:"DL",
-        quantity:1
+        dategiven: "03/02/20",
+        datedue: "03/05/20",
+        percentage: 65
       }
     ];
    }
 
    public getAllAssignmentItems():AssignmentItem[]
    {
+     console.log("AssignmentTaskServiceService:getAllAssignmentTaskItems ", this.db.length);
      return this.db;
    }
 

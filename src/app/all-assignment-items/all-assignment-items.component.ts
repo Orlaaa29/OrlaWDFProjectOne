@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AssignmentTaskServiceService } from '../assignment-task-service.service';
+import { AssignmentItem } from '../assignment-item';
 
 @Component({
   selector: 'app-all-assignment-items',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllAssignmentItemsComponent implements OnInit {
 
-  constructor() { }
+  private assignmentTask:AssignmentItem[];
 
-  ngOnInit(): void {
+  constructor(private AssignmentTaskService: AssignmentTaskServiceService) { }
+
+  ngOnInit() {
+    this.assignmentTask = this.AssignmentTaskService.getAllAssignmentItems()
   }
 
 }
