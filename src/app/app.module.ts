@@ -9,13 +9,15 @@ import { NewAssignmentComponent } from './new-assignment/new-assignment.componen
 import { AllAssignmentItemsComponent } from './all-assignment-items/all-assignment-items.component';
 import { SingleAssignmentItemComponent } from './single-assignment-item/single-assignment-item.component';
 import { AssignmentTaskServiceService } from './assignment-task-service.service';
+import { UpdateAssignmentComponent } from './update-assignment/update-assignment.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewAssignmentComponent,
     AllAssignmentItemsComponent,
-    SingleAssignmentItemComponent
+    SingleAssignmentItemComponent,
+    UpdateAssignmentComponent
   ],
   imports: [
     BrowserModule,
