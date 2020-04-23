@@ -2,6 +2,6 @@
 
 <ul>
     <li *ngFor="let item of assignmentTask">
-        {{item.title}} by {{item.description}} by {{item.dategiven}} by {{item.duedate}} by {{item.percentage}}
+        <a routerLink="/item/{{item.id}}">{{item.title}}</a> by {{item.description}} by {{item.dategiven}} by {{item.datedue}} by {{item.percentage}}
     </li>
 </ul>

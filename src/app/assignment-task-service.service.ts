@@ -6,6 +6,7 @@ import { AssignmentItem } from './assignment-item';
 })
 export class AssignmentTaskServiceService {
   private db: AssignmentItem[];
+  private indexOfNextItem:number=4;
   constructor() {
     console.log("Constructing the service");
 
@@ -45,10 +46,23 @@ export class AssignmentTaskServiceService {
 
    public getAssignmentItem(itemID:number):AssignmentItem
    {
-     return null;
+     let filteredArray:AssignmentItem[];
+
+     filteredArray = this.db.filter((item) =>{
+       if (item.id==itemID)
+       {
+         return true;
+       }
+       else{
+         return false;
+       }
+     });
+     return filteredArray[0];
    }
 
    public addAssignmentItem(anItem:AssignmentItem):void{
+     anItem.id=this.indexOfNextItem;
+     this.indexOfNextItem++;
      this.db.push(anItem);
    }
 
