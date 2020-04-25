@@ -68,6 +68,13 @@ export class AssignmentTaskServiceService {
 
    public deleteAssignmentItem(anItem:AssignmentItem):void{}
 
-  public updateAssignmentItem(updateItem:AssignmentItem):void{}
+  public updateAssignmentItem(updatedItem:AssignmentItem):void{
+    let i:number = this.db.indexOf(updatedItem);
+  
+    this.db[i].description=updatedItem.description;
+    this.db[i].dategiven=updatedItem.dategiven;
+    this.db[i].datedue=updatedItem.datedue;
+    this.db[i].percentage=updatedItem.percentage;
+  }
  
 }

@@ -1,1 +1,27 @@
-<p>update-assignment works!</p>
+<form [formGroup]="updateAssignmentForm" (ngSubmit)="onSubmit(updateAssignmentForm.value)">
+    <div>
+        <label for="taskTitle">Title:</label>
+        <span id="taskTitle">{{assignmentItem.title}}</span>
+    </div>
+    <div>
+        <label for="taskDes">Description:</label>
+        <input id="taskDes" type="text" formControlName="description" value="{{assignmentItem.description}}"> 
+    </div>
+    <div>
+        <label for="taskGiven">Date Given:</label>
+        <input id="taskTitle" type="date" formControlName="given" value="{{assignmentItem.dategiven}}">
+    </div>
+    <div>
+        <label for="taskDue">Due Date:</label>
+        <input id="taskDue" type="date" formControlName="due" value="{{assignmentItem.duedate}}">
+    </div>
+    
+<div>
+        <label for="taskPercent">Percentage:</label>
+        <input id="taskPercent" type="number" formControlName="percent" value="{{assignmentItem.percentage}}">
+    </div>
+    
+    <button type="submit" class="button">Update</button>
+    <button type="button" class="button" (click)="onCancel()">Cancel</button>
+</form>
+

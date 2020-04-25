@@ -3,5 +3,6 @@
 <ul>
     <li *ngFor="let item of assignmentTask">
         <a routerLink="/item/{{item.id}}">{{item.title}}</a> by {{item.description}} by {{item.dategiven}} by {{item.datedue}} by {{item.percentage}}
+        <a routerLink="/update/{{item.id}}">[Edit]</a>
     </li>
 </ul>

@@ -28,8 +28,33 @@ export class UpdateAssignmentComponent implements OnInit {
     );
 
     this.updateAssignmentForm =this.formBuilder.group({
+      description: new FormControl(this.assignmentItem.description),
+      dategiven: new FormControl(this.assignmentItem.dategiven, [Validators.required]),
+      datedue: new FormControl(this.assignmentItem.datedue, [Validators.required]),
+      percentage:new FormControl(this.assignmentItem.percentage, [Validators.required])
       
-    })
+    });
   }
 
+  public onSubmit(updatedItem:AssignmentItem):void{
+    if (this.updateAssignmentForm.status === 'VALID')
+    {
+      console.log("Valid item, updating DB");
+      this.assignmentItem.description=updatedItem.description;
+      this.assignmentItem.dategiven=updatedItem.dategiven;
+      this.assignmentItem.datedue=updatedItem.datedue;
+      this.assignmentItem.percentage=updatedItem.percentage;
+      this.assignmentTaskService.updateAssignmentItem(this.assignmentItem);
+
+      this.router.navigate(['/task']);
+    }
+    else{
+      console.log("*** Invaliditem submitted ***");
+    }
+  }
+
+  public onCancel():void{
+    console.log("Redirect back to list");
+    this.router.navigate(['/task']);
+  }
 }
