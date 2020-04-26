@@ -1,4 +1,4 @@
-<form [formGroup]="assignmentForm"(ngSubmit)="onSubmit(assignmentForm.value)">
+<form [formGroup]="assignmentForm" (ngSubmit)="onSubmit(assignmentForm.value)">
     <div>
         <label for="taskTitle">Title:</label>
         <input id="taskTitle" type="text" formControlName="title">
@@ -9,16 +9,16 @@
     </div>
     <div>
         <label for="taskGiven">Date Given:</label>
-        <input id="taskTitle" type="date" formControlName="given">
+        <input id="taskTitle" type="date" formControlName="dategiven">
     </div>
     <div>
         <label for="taskDue">Due Date:</label>
-        <input id="taskDue" type="date" formControlName="due">
+        <input id="taskDue" type="date" formControlName="datedue">
     </div>
     
     <div>
         <label for="taskPercent">Percentage:</label>
-        <input id="taskPercent" type="number" formControlName="percent">
+        <input id="taskPercent" type="number" formControlName="percentage">
     </div>
     
     <button type="submit">Add</button>

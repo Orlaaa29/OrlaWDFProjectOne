@@ -66,7 +66,11 @@ export class AssignmentTaskServiceService {
      this.db.push(anItem);
    }
 
-   public deleteAssignmentItem(anItem:AssignmentItem):void{}
+   public deleteAssignmentItem(anItem:AssignmentItem):void{
+    let i:number = this.db.indexOf(anItem);
+
+    this.db.splice(i,1);
+   }
 
   public updateAssignmentItem(updatedItem:AssignmentItem):void{
     let i:number = this.db.indexOf(updatedItem);

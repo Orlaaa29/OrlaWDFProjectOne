@@ -1,0 +1,10 @@
+<form [formGroup]="confirmationForm" (ngSubmit)="confirmDelete(confirmationForm.value)">
+    <div>
+        <span>Delete Item :</span>&nbsp;
+        <label for="yes">Yes</label><input id="yes" type="radio" name="confirmation" value="yes" formControlName="confirmation">
+        <label for="no">No</label><input id="no" type="radio" name="confirmation" value="no" formControlName="confirmation" >
+    </div>
+    <div>
+        <button>Proceed</button>
+    </div>
+</form>

@@ -10,6 +10,7 @@ import { AllAssignmentItemsComponent } from './all-assignment-items/all-assignme
 import { SingleAssignmentItemComponent } from './single-assignment-item/single-assignment-item.component';
 import { AssignmentTaskServiceService } from './assignment-task-service.service';
 import { UpdateAssignmentComponent } from './update-assignment/update-assignment.component';
+import { DeleteAssignmentComponent } from './delete-assignment/delete-assignment.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { UpdateAssignmentComponent } from './update-assignment/update-assignment
     NewAssignmentComponent,
     AllAssignmentItemsComponent,
     SingleAssignmentItemComponent,
-    UpdateAssignmentComponent
+    UpdateAssignmentComponent,
+    DeleteAssignmentComponent
   ],
   imports: [
     BrowserModule,

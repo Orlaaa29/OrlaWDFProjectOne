@@ -4,13 +4,14 @@ import { AllAssignmentItemsComponent } from './all-assignment-items/all-assignme
 import { NewAssignmentComponent } from './new-assignment/new-assignment.component';
 import { SingleAssignmentItemComponent } from './single-assignment-item/single-assignment-item.component';
 import { UpdateAssignmentComponent } from './update-assignment/update-assignment.component';
-
+import { DeleteAssignmentComponent } from './delete-assignment/delete-assignment.component';
 
 const routes: Routes = [
   {path:'task', component: AllAssignmentItemsComponent},
   {path:'form', component: NewAssignmentComponent},
   {path:'item/:itemID', component: SingleAssignmentItemComponent},
-  {path:'update/:itemID',component:UpdateAssignmentComponent}
+  {path:'update/:itemID',component:UpdateAssignmentComponent},
+  {path:'delete/:itemID',component:DeleteAssignmentComponent}
 ];
 
 @NgModule({
