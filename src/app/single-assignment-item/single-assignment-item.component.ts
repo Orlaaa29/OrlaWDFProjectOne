@@ -19,9 +19,12 @@ export class SingleAssignmentItemComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(
       (params) =>{
-        this.assignmentItem= this.assignmentTaskService.getAssignmentItem(+params.get("itemID"));
-      }    
+         this.assignmentTaskService.getAssignmentItem(+params.get("itemID")).subscribe(
+          (data)=> {
+            this.assignmentItem = data;
+          }
+        );  
+      }
     );
-
-    }
   }
+}

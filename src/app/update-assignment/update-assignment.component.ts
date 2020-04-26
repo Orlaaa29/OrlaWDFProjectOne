@@ -23,15 +23,23 @@ export class UpdateAssignmentComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(
       (params) =>{
-        this.assignmentItem= this.assignmentTaskService.getAssignmentItem(+params.get("itemID"));
+        this.assignmentTaskService.getAssignmentItem(+params.get("itemID")).subscribe(
+          (data)=>{
+             this.assignmentItem = data;
+             this.updateAssignmentForm.controls['description'].setValue(this.assignmentItem.description);
+             this.updateAssignmentForm.controls['dategiven'].setValue(this.assignmentItem.dategiven);
+             this.updateAssignmentForm.controls['datedue'].setValue(this.assignmentItem.datedue);
+             this.updateAssignmentForm.controls['percentage'].setValue(this.assignmentItem.percentage);
+          }
+        )
       }    
     );
 
     this.updateAssignmentForm =this.formBuilder.group({
-      description: new FormControl(this.assignmentItem.description),
-      dategiven: new FormControl(this.assignmentItem.dategiven, [Validators.required]),
-      datedue: new FormControl(this.assignmentItem.datedue, [Validators.required]),
-      percentage:new FormControl(this.assignmentItem.percentage, [Validators.required])
+      description: new FormControl(''),
+      dategiven: new FormControl('', [Validators.required]),
+      datedue: new FormControl('', [Validators.required]),
+      percentage:new FormControl('', [Validators.required])
       
     });
   }
@@ -44,12 +52,17 @@ export class UpdateAssignmentComponent implements OnInit {
       this.assignmentItem.dategiven=updatedItem.dategiven;
       this.assignmentItem.datedue=updatedItem.datedue;
       this.assignmentItem.percentage=updatedItem.percentage;
-      this.assignmentTaskService.updateAssignmentItem(this.assignmentItem);
+      this.assignmentTaskService.updateAssignmentItem(this.assignmentItem).subscribe(
+        (data)=>{
+          this.router.navigate(['/task']);
 
-      this.router.navigate(['/task']);
+        }
+      );
+
+      
     }
     else{
-      console.log("*** Invaliditem submitted ***");
+      console.log("*** Invalid item submitted ***");
     }
   }
 

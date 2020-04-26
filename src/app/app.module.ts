@@ -11,6 +11,9 @@ import { SingleAssignmentItemComponent } from './single-assignment-item/single-a
 import { AssignmentTaskServiceService } from './assignment-task-service.service';
 import { UpdateAssignmentComponent } from './update-assignment/update-assignment.component';
 import { DeleteAssignmentComponent } from './delete-assignment/delete-assignment.component';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDatabaseService } from './in-memory-database.service';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { DeleteAssignmentComponent } from './delete-assignment/delete-assignment
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDatabaseService,{dataEncapsulation:false}
+    ),
   ],
   providers: [AssignmentTaskServiceService],
   bootstrap: [AppComponent]

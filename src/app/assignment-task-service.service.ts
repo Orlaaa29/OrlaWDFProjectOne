@@ -1,84 +1,44 @@
 import { Injectable } from '@angular/core';
 import { AssignmentItem } from './assignment-item';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AssignmentTaskServiceService {
-  private db: AssignmentItem[];
-  private indexOfNextItem:number=4;
-  constructor() {
+
+  private webURI: string ='api/items';
+  private httpOptions ={
+    headers: new HttpHeaders({ 'Content-type': 'application/json'})
+  };
+
+  constructor(private http:HttpClient) {
     console.log("Constructing the service");
-
-    this.db=[
-      {
-        id:1,
-        title:"WDF",
-        description:"WDF",
-        dategiven: "03/02/20",
-        datedue: "05/05/20",
-        percentage: 65
-      },
-      {
-        id:2,
-        title:"AMR",
-        description:"AMR",
-        dategiven: "03/02/20",
-        datedue: "03/05/20",
-        percentage: 65
-      },
-      {
-        id:3,
-        title:"DL",
-        description:"DL",
-        dategiven: "03/02/20",
-        datedue: "03/05/20",
-        percentage: 65
-      }
-    ];
    }
 
-   public getAllAssignmentItems():AssignmentItem[]
+   public getAllAssignmentItems():Observable<AssignmentItem[]>
    {
-     console.log("AssignmentTaskServiceService:getAllAssignmentTaskItems ", this.db.length);
-     return this.db;
+     console.log("AssignmentTaskServiceService:getAllAssignmentItems ");
+     return this.http.get<AssignmentItem[]>(this.webURI,this.httpOptions);
    }
 
-   public getAssignmentItem(itemID:number):AssignmentItem
+   public getAssignmentItem(itemID:number):Observable<AssignmentItem[]>
    {
-     let filteredArray:AssignmentItem[];
-
-     filteredArray = this.db.filter((item) =>{
-       if (item.id==itemID)
-       {
-         return true;
-       }
-       else{
-         return false;
-       }
-     });
-     return filteredArray[0];
+     console.log("Looking for the item", itemID);
+     return this.http.get<AssignmentItem[]>(this.webURI + "/" + itemID);
    }
 
-   public addAssignmentItem(anItem:AssignmentItem):void{
-     anItem.id=this.indexOfNextItem;
-     this.indexOfNextItem++;
-     this.db.push(anItem);
+   public addAssignmentItem(anItem:AssignmentItem):Observable<AssignmentItem[]>{
+    return this.http.post<AssignmentItem[]>(this.webURI, anItem, this.httpOptions);
    }
 
-   public deleteAssignmentItem(anItem:AssignmentItem):void{
-    let i:number = this.db.indexOf(anItem);
-
-    this.db.splice(i,1);
+   public deleteAssignmentItem(anItem:AssignmentItem):Observable<AssignmentItem[]>{
+    return this.http.delete<AssignmentItem[]>(this.webURI + "/" + anItem.id, this.httpOptions);
    }
 
-  public updateAssignmentItem(updatedItem:AssignmentItem):void{
-    let i:number = this.db.indexOf(updatedItem);
-  
-    this.db[i].description=updatedItem.description;
-    this.db[i].dategiven=updatedItem.dategiven;
-    this.db[i].datedue=updatedItem.datedue;
-    this.db[i].percentage=updatedItem.percentage;
+  public updateAssignmentItem(updatedItem:AssignmentItem):Observable<AssignmentItem[]>{
+  return this.http.put<AssignmentItem[]>(this.webURI + "/" + updatedItem, this.httpOptions);
   }
  
 }

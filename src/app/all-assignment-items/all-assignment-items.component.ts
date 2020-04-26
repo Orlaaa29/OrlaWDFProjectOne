@@ -14,7 +14,11 @@ export class AllAssignmentItemsComponent implements OnInit {
   constructor(private AssignmentTaskService: AssignmentTaskServiceService) { }
 
   ngOnInit() {
-    this.assignmentTask = this.AssignmentTaskService.getAllAssignmentItems()
+    this.AssignmentTaskService.getAllAssignmentItems().subscribe(
+      (data)=>{
+        this.assignmentTask = data;
+      }
+    )
   }
 
 }

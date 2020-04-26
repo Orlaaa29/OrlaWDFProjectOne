@@ -21,7 +21,11 @@ export class DeleteAssignmentComponent implements OnInit {
   ngOnInit(){
     this.route.paramMap.subscribe(
       (params) =>{
-        this.itemToDelete = this.assignmentTaskService.getAssignmentItem(+params.get("itemID"));
+        this.assignmentTaskService.getAssignmentItem(+params.get("itemID")).subscribe(
+          (data)=> {
+            this.itemToDelete = data;
+          }
+        );
       }    
     );
 
@@ -36,8 +40,13 @@ export class DeleteAssignmentComponent implements OnInit {
     console.log(JSON.stringify(formValues));
 
     if (formValues.confirmation == "yes"){
-      this.assignmentTaskService.deleteAssignmentItem(this.itemToDelete);
-      this.router.navigate(['/task']);
+      this.assignmentTaskService.deleteAssignmentItem(this.itemToDelete).subscribe(
+
+        (data)=>{
+          this.router.navigate(['/task']);
+        }
+      );
+      
     }
 
     else{
