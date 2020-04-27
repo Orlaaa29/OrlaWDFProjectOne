@@ -1,5 +1,5 @@
 export interface AssignmentItem {
-    id: number;
+    id: string;
     title: string;
     description: string;
     dategiven: string;

@@ -9,7 +9,7 @@ import { AssignmentTaskServiceService } from '../assignment-task-service.service
   styleUrls: ['./single-assignment-item.component.css']
 })
 export class SingleAssignmentItemComponent implements OnInit {
-  private assignmentItem:AssignmentItem
+  public assignmentItem:AssignmentItem
 
   constructor(
     private route:ActivatedRoute,
@@ -19,7 +19,7 @@ export class SingleAssignmentItemComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(
       (params) =>{
-         this.assignmentTaskService.getAssignmentItem(+params.get("itemID")).subscribe(
+         this.assignmentTaskService.getAssignmentItem(params.get("itemID")).subscribe(
           (data)=> {
             this.assignmentItem = data;
           }

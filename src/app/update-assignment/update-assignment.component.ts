@@ -10,8 +10,8 @@ import {AssignmentItem} from '../assignment-item';
   styleUrls: ['./update-assignment.component.css']
 })
 export class UpdateAssignmentComponent implements OnInit {
-  private assignmentItem:AssignmentItem;
-  private updateAssignmentForm:FormGroup;
+  public assignmentItem:AssignmentItem;
+  public updateAssignmentForm:FormGroup;
 
   constructor(
     private route:ActivatedRoute,
@@ -23,7 +23,7 @@ export class UpdateAssignmentComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(
       (params) =>{
-        this.assignmentTaskService.getAssignmentItem(+params.get("itemID")).subscribe(
+        this.assignmentTaskService.getAssignmentItem(params.get("itemID")).subscribe(
           (data)=>{
              this.assignmentItem = data;
              this.updateAssignmentForm.controls['description'].setValue(this.assignmentItem.description);

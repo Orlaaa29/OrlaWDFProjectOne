@@ -13,6 +13,9 @@ import { UpdateAssignmentComponent } from './update-assignment/update-assignment
 import { DeleteAssignmentComponent } from './delete-assignment/delete-assignment.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDatabaseService } from './in-memory-database.service';
+import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire'; 
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 
 @NgModule({
@@ -30,9 +33,11 @@ import { InMemoryDatabaseService } from './in-memory-database.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDatabaseService,{dataEncapsulation:false}
-    ),
+    /*HttpClientInMemoryWebApiModule.forRoot(
+     InMemoryDatabaseService,{dataEncapsulation:false}
+    ),*/
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
   ],
   providers: [AssignmentTaskServiceService],
   bootstrap: [AppComponent]

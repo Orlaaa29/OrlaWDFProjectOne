@@ -9,7 +9,7 @@ import { AssignmentItem } from '../assignment-item';
 })
 export class AllAssignmentItemsComponent implements OnInit {
 
-  private assignmentTask:AssignmentItem[];
+  public assignmentTask:AssignmentItem[];
 
   constructor(private AssignmentTaskService: AssignmentTaskServiceService) { }
 
@@ -18,7 +18,7 @@ export class AllAssignmentItemsComponent implements OnInit {
       (data)=>{
         this.assignmentTask = data;
       }
-    )
+    );
   }
 
 }

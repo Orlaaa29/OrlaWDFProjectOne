@@ -10,8 +10,8 @@ import {AssignmentTaskServiceService} from '../assignment-task-service.service';
   styleUrls: ['./delete-assignment.component.css']
 })
 export class DeleteAssignmentComponent implements OnInit {
-  private confirmationForm:FormGroup;
-  private itemToDelete:AssignmentItem;
+  public confirmationForm:FormGroup;
+  public itemToDelete:AssignmentItem;
 
   constructor(private formBuilder:FormBuilder,
     private route:ActivatedRoute,
@@ -21,7 +21,7 @@ export class DeleteAssignmentComponent implements OnInit {
   ngOnInit(){
     this.route.paramMap.subscribe(
       (params) =>{
-        this.assignmentTaskService.getAssignmentItem(+params.get("itemID")).subscribe(
+        this.assignmentTaskService.getAssignmentItem(params.get("itemID")).subscribe(
           (data)=> {
             this.itemToDelete = data;
           }
