@@ -19,7 +19,7 @@ export class AssignmentTaskServiceService {
 
    public getAllAssignmentItems():Observable<AssignmentItem[]>
    {
-     console.log("AssignmentTaskServiceService:getAllAssignmentItems ");
+     console.log("AssignmentTaskServiceService:getAllAssignmentTaskItems ");
      return this.http.get<AssignmentItem[]>(this.webURI,this.httpOptions);
    }
 
